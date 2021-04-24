@@ -7,4 +7,6 @@ const router = express.Router();
 //index page
 router.get('/', linkController.index);
 
+router.post('/', linkController.createShortLink)
+
 module.exports = router;
