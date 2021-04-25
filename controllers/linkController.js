@@ -11,6 +11,12 @@ const createShortLink = async (req, res) => {
     let newUrl = "";
     if (req.body.hasOwnProperty('custom_url')) {
         newUrl = "/" + req.body.custom_url
+        let exists = await Link.exists({shortUrl: newUrl})
+        if (exists) {
+            res.statusMessage = 'Url exists'
+            res.status(400).render('index', {title: 'Home'})
+            return
+        }
     } else {
         let urlFound = false;
         do {
@@ -27,7 +33,8 @@ const createShortLink = async (req, res) => {
     link.save()
     .then(result => {
         console.log(result);
-        res.redirect('/')
+        let message = 'Short URL: ' + newUrl
+        res.render('index', {title: 'Home', message})
     })
     .catch(err => {
         console.log(err);
