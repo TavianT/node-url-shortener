@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const linkSchema = new Schema({
-    orignalUrl: {
+    originalUrl: {
         type: String,
         required: true
     },

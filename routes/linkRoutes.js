@@ -9,4 +9,6 @@ router.get('/', linkController.index);
 
 router.post('/', linkController.createShortLink)
 
+router.get('/:id', linkController.goToShortLink)
+
 module.exports = router;

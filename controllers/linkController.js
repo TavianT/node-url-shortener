@@ -13,8 +13,9 @@ const createShortLink = async (req, res) => {
         newUrl = "/" + req.body.custom_url
         let exists = await Link.exists({shortUrl: newUrl})
         if (exists) {
+            let message = '400 Error: ' + newUrl + " already exists";
             res.statusMessage = 'Url exists'
-            res.status(400).render('index', {title: 'Home'})
+            res.status(400).render('index', {title: 'Home', message})
             return
         }
     } else {
@@ -29,7 +30,7 @@ const createShortLink = async (req, res) => {
             }
         } while (!urlFound);
     }
-    const link = new Link({orignalUrl: req.body.url, shortUrl: newUrl})
+    const link = new Link({originalUrl: req.body.url, shortUrl: newUrl})
     link.save()
     .then(result => {
         console.log(result);
@@ -41,7 +42,18 @@ const createShortLink = async (req, res) => {
     })
 }
 
+const goToShortLink = (req, res) => {
+    const url = "/" + req.params.id;
+    Link.findOne({shortUrl: url})
+    .then(result => {
+        console.log(result);
+        console.log(result.originalUrl);
+        res.redirect(result.originalUrl);
+    })
+}
+
 module.exports = {
     index,
-    createShortLink
+    createShortLink,
+    goToShortLink
 }
