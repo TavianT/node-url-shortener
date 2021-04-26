@@ -6,7 +6,7 @@
     <%- include('./partials/nav.ejs') %> 
 
     <div class="container">
-        <form action="/" method="post">
+        <form action="/" method="post" name="urlCreationForm" id="urlCreationForm" onsubmit="return formValidation()">
             <label for="url">Enter URL here:</label>
             <input type="text" name="url" id="url" required>
             <label for="custom-url-checkbox">Custom shortened URL</label>

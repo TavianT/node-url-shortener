@@ -46,8 +46,6 @@ const goToShortLink = (req, res) => {
     const url = "/" + req.params.id;
     Link.findOne({shortUrl: url})
     .then(result => {
-        console.log(result);
-        console.log(result.originalUrl);
         res.redirect(result.originalUrl);
     })
 }
