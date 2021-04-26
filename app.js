@@ -3,6 +3,7 @@ const morgan = require('morgan');
 const mongoose = require('mongoose');
 const mongoCredentials = require('./mongoCredentials');
 const linkRoutes = require('./routes/linkRoutes')
+const pageRoutes = require('./routes/pageRoutes')
 
 //express app
 const app = express();
@@ -19,6 +20,9 @@ app.set('view engine', 'ejs');
 app.use(express.static('public'));
 app.use(express.urlencoded({ extended: true }));
 app.use(morgan('dev'));
+
+//pages routes
+app.use('/pages', pageRoutes)
 
 //link routes
 app.use('/',linkRoutes);
