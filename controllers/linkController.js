@@ -34,7 +34,7 @@ const createShortLink = async (req, res) => {
     link.save()
     .then(result => {
         console.log(result);
-        let message = 'Short URL: ' + newUrl
+        let message = `Short URL: ${req.hostname+newUrl}`
         res.render('index', {title: 'Home', message})
     })
     .catch(err => {
