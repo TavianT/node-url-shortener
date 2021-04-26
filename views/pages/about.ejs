@@ -2,7 +2,16 @@
 <html lang="en">
 <%- include('../partials/head.ejs') %> 
 <body>
-    <%- include('../partials/nav.ejs') %> 
+    <%- include('../partials/nav.ejs') %>
+    <div class="container">
+        <h2>About</h2>
+        <p clas>This URL shortener was created by me Tavian Taylor using node.js, express and MongoDB. Use the links below to email me, check out my github or check out my LinkedIn profile.</p>
+    </div>
+    <div class="media">
+        <a href="mailto:taviantaylor00@gmail.com" target="_blank"><img src="../iconmonstr-email-1.svg" alt="email"></a>
+        <a href="https://github.com/TavianT/node-url-shortener" target="_blank"> <img src="../iconmonstr-github-3.svg" alt="email"> </a>
+        <a href="https://www.linkedin.com/in/tavian-taylor-86ba8b18a/" target="_blank"> <img src="../iconmonstr-linkedin-3.svg" alt="email"> </a>
+    </div>
     <%- include('../partials/footer.ejs') %>
 </body>
 </html>
