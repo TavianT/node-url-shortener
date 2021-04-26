@@ -26,3 +26,7 @@ app.use('/pages', pageRoutes)
 
 //link routes
 app.use('/',linkRoutes);
+
+app.use((req, res) => {
+    res.status(404).render('404', {title: "Page not found"})
+})
