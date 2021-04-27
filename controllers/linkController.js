@@ -1,4 +1,3 @@
-const { result } = require('lodash');
 const Link = require('../models/link');
 const Util = require('../util')
 
@@ -13,7 +12,7 @@ const createShortLink = async (req, res) => {
         newUrl = "/" + req.body.custom_url
         let exists = await Link.exists({shortUrl: newUrl})
         if (exists) {
-            let message = '400 Error: ' + newUrl + " already exists";
+            let message = `Custom URL ${newUrl} already exists`;
             res.statusMessage = 'Url exists'
             res.status(400).render('index', {title: 'Home', message})
             return
